@@ -33,7 +33,7 @@ namespace HumbleBundleScraper.Mirrors
                 case "Libgen.gs":
                     return new LibgenGSMirror();
                 case "Z-Library":
-                    return new ZLibrary();
+                    // return new ZLibrary();   // commented out, because it is not implemented correctly for async 
                 default:
                     throw new NotImplementedException("Other download links are not currently implemented, please continue manually!");
             }
@@ -44,7 +44,7 @@ namespace HumbleBundleScraper.Mirrors
             var response = await getDownloadResponseAsync(downloadLink);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                throw new ArgumentException($"Server has not responsed with 200 {response.StatusCode} ({(int) response.StatusCode}). Link -> {downloadLink}");
+                throw new ArgumentException($"Server has not responsed with 200, but it did with {response.StatusCode} ({(int) response.StatusCode}). Link -> {downloadLink}");
 
             EnsurePathsCreated(book);
             var ext = Path.GetExtension(response.Content.Headers.ContentDisposition.FileName.Replace("\"", ""));

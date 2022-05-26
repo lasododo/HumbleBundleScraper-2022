@@ -20,6 +20,7 @@ namespace HumbleBundleScraper.Mirrors
             var uri = new Uri(downloadLink);
             var client = new HttpClient(new HttpClientHandler { AllowAutoRedirect = true });
             client.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/101.0.4951.64 Safari/537.36");
+                                                    // TODO get the correct referer
             client.DefaultRequestHeaders.Add("Referer", "https://3lib.net/book/5416472/00bb74");
             return client.GetAsync(uri);
         }

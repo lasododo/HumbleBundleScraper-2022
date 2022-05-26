@@ -26,7 +26,7 @@ foreach (var book in books)
 
     var mirrorLinks = new List<IMirror>();
 
-    // Take(3) -> only 3 are implemented
+    // Take(2) -> only 2 are implemented
     foreach (var libgenDownloadLink in libgenDownloadLinks.Take(2))
     {     
         var aTag = libgenDownloadLink.FindElement(By.TagName("a"));
@@ -58,8 +58,8 @@ foreach (var book in books)
                 }
                 catch (Exception e)   // when could be used, but for now this made sense to me
                 {
-                    Console.WriteLine($"Failed to download the book. {bookMirror.DownloaderName} has not yet implemented all the functionality");
-                    Console.WriteLine($"Please, try to use a different mirror. -> {e.Message}");
+                    Console.WriteLine($"Failed to download the book. {bookMirror.DownloaderName}. " +
+                        $"Please, try again to use a different mirror. -> {e.Message}");
                 }
             }
             await Task.Delay(1000); // to avoid sending too many requests at once

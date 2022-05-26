@@ -26,6 +26,7 @@ namespace HumbleBundleScraper.Mirrors
 
         public override async Task Download(IWebDriver driver, Book book)
         {
+            // the code before
             // driver.Url = DownloadLink;
             // var downloadLink = driver.FindElement(By.XPath("//*[@id=\"main\"]/tbody/tr[1]/td[2]/a")).GetAttribute("href");
             string result = "";
